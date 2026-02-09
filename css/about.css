@@ -1,0 +1,287 @@
+:root {
+  --bg: #070712;
+  --bg-soft: #000000e5;
+  --text: #ffffff;
+  --muted: #bdbdbd;
+  --accent: #ffffff;
+  --accent-2: #ff6b6b;
+  --radius: 18px;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "DM Sans", sans-serif;
+  background: #000;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* WRAPPER */
+#wrapper {
+  background: #000 !important;
+}
+
+/* GLOBAL */
+.section-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 90px 20px;
+  position: relative;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Unbounded", sans-serif;
+  letter-spacing: 0.5px;
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 14px;
+}
+h3 {
+  font-weight: 400 !important;
+  font-size: 24px;
+  margin-bottom: 18px;
+}
+p {
+  color: var(--muted);
+}
+img {
+  width: 100%;
+  border-radius: var(--radius);
+}
+
+/* ============================
+   ABOUT SECTION (3D CAMERA)
+============================ */
+.about {
+  margin-top: 120px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* HIDE ORIGINAL IMAGE VISUALLY */
+.about-grid img {
+  opacity: 100%;
+  pointer-events: none;
+}
+
+/* ============================
+   HOW WE TEACH – HOVER EXPAND
+============================ */
+.educate-grid {
+  display: flex;
+  gap: 24px;
+  margin-top: 50px;
+}
+
+.edu-box {
+  flex: 1;
+  background: linear-gradient(180deg, #0b0b0b, #000);
+  padding: 36px 0 0 0;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* GRADIENT CONTENT MASK */
+.edu-box p {
+  max-height: 120px;
+  overflow: hidden;
+  mask-image: linear-gradient(#000 60%, transparent);
+  transition: all 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* EXPAND SIDEWAYS */
+.edu-box:hover {
+  flex: 5.2 0 0%;
+  transform: translateY(-10px);
+  z-index: 5;
+}
+
+.edu-box:hover p {
+  max-height: 500px;
+  mask-image: none;
+}
+
+/* ============================
+   STATS – SMOOTH POP
+============================ */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 60px;
+  border-radius: 26px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.stat {
+  background: var(--bg-soft);
+  padding: 34px;
+  text-align: center;
+  border-radius: 100px;
+  transition: transform 0.5s var(--ease);
+}
+
+.stat:hover {
+  transform: scale(1.08);
+}
+.stat h3 {
+  font-size: 34px;
+}
+
+/* ============================
+   GALLERY – BW → COLOR
+============================ */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 40px;
+}
+
+.gallery img {
+  filter: grayscale(100%) brightness(0.6);
+  transition: all 0.7s var(--ease);
+  transform: scale(1);
+}
+
+.gallery img:hover {
+  filter: grayscale(0) brightness(1);
+  transform: scale(1.08);
+  z-index: 2;
+}
+
+/* ============================
+   TESTIMONIALS
+============================ */
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.test-card {
+  background: #272727a1;
+  padding: 34px;
+  border-radius: var(--radius);
+  transition: all 0.5s var(--ease);
+}
+
+.test-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7);
+}
+
+.test-card span {
+  color: #f4c430;
+}
+/* =========================
+   FAQ – SMOOTH ACCORDION
+========================= */
+
+.faq details {
+  background: linear-gradient(180deg, #0b0b0b, #1615159a);
+  border-radius: 16px;
+  margin-bottom: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* SUMMARY */
+.faq summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 22px 26px;
+  list-style: none;
+  position: relative;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ICON */
+.faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 26px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  transition: transform 0.35s ease;
+}
+
+.faq details[open] summary::after {
+  content: "–";
+}
+
+/* CONTENT WRAPPER */
+.faq details p {
+  padding: 0 26px 24px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* SMOOTH STATES (JS controls height) */
+.faq details .faq-inner {
+  overflow: hidden;
+  will-change: height, opacity;
+}
+
+/* ============================
+   BUTTON
+============================ */
+button {
+  padding: 14px 34px;
+  border-radius: 30px;
+  border-width: 1px;
+  border-color: #fff;
+  border-style: solid;
+  background-color: transparent;
+  color: #ffffff;
+
+  cursor: pointer;
+  transition: transform 0.3s var(--ease);
+}
+button:hover {
+  background-color: #ff0000;
+
+  transform: scale(1.08);
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+@media (max-width: 1000px) {
+  .about-grid,
+  .educate-grid,
+  .stats,
+  .gallery,
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .about-grid::after,
+  .about-grid::before {
+    display: none;
+  }
+}

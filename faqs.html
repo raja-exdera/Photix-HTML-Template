@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <title>Photix - Photography Website Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Photix is Creative Website Template">
+    <meta name="keywords" content="agency, business, clean, creative, fullscreen, fullscreen photography, fullscreen portfolio, gallery, photo, photographer, photography, photography theme, portfolio, responsive">
+    <meta name="author" content="">
+
+    <!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<![endif]-->
+
+    <!-- CSS Files
+    ================================================== -->
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="css/animate.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <!-- background -->
+    <link rel="stylesheet" href="css/bg.css" type="text/css">
+
+    <!-- color scheme -->
+    <link rel="stylesheet" id="colors" href="css/colors/red.css" type="text/css">
+    </head>
+
+
+<style>
+/* ---------------- GLOBAL ---------------- */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:#000000;
+  color:#fff;
+  line-height:1.6;
+}
+
+#wrapper{
+  background-color: #000 !important;
+}
+
+h2{
+
+}
+
+h3{
+  font-family:'Unbounded',sans-serif;
+  font-weight:600;
+}
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 20px;
+}
+
+/* ---------------- HERO ---------------- */
+.faq-hero{
+  text-align: center;
+  margin: 150px auto 0;
+  padding:120px 20px 50px;
+  border-bottom:1px solid #222;
+}
+.faq-hero h2{
+  text-align: center;
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom:10px;
+}
+.faq-hero span{
+  color:#aaa;
+  font-size:14px;
+  letter-spacing:2px;
+}
+
+/* ---------------- ENROLL SECTIONS ---------------- */
+.enroll-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+.enroll-text h2{
+  font-size:32px;
+  margin-bottom:20px;
+}
+.enroll-text p{
+  color:#ccc;
+  margin-bottom:16px;
+}
+.enroll-img{
+  border-radius:16px;
+  overflow:hidden;
+}
+.enroll-img img{
+  width:100%;
+  display:block;
+  filter:grayscale(100%);
+}
+@media(max-width:900px){
+  .enroll-grid{grid-template-columns:1fr}
+}
+
+/* ---------------- FAQ SECTION ---------------- */
+.faq-section{
+  border-top:1px solid #222;
+}
+.faq-title{
+  text-align:center;
+  margin-bottom:60px;
+}
+.faq-title h2{
+  font-size:40px;
+}
+.faq-title p{
+  color:#aaa;
+  margin-top:10px;
+}
+
+/* ---------------- ACCORDION ---------------- */
+.faq-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+.faq-item{
+  background:#0c0c0c;
+  border:1px solid #222;
+  border-radius:12px;
+  overflow:hidden;
+}
+.faq-question{
+  padding:20px 22px;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.faq-question h4{
+  font-size:16px;
+  font-weight:500;
+}
+.faq-question span{
+  font-size:22px;
+  transition:.3s;
+}
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:.4s ease;
+  padding:0 22px;
+}
+.faq-answer p{
+  color:#bbb;
+  padding-bottom:20px;
+}
+.faq-item.active .faq-answer{
+  max-height:300px;
+}
+.faq-item.active span{
+  transform:rotate(45deg);
+}
+@media(max-width:900px){
+  .faq-grid{grid-template-columns:1fr}
+}
+
+/* ---------------- CTA ---------------- */
+.faq-cta{
+  background:#fff;
+  color:#000;
+  border-radius:20px;
+  padding:50px;
+  margin-top:100px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
+}
+.faq-cta h3{
+  font-size:28px;
+}
+.faq-cta p{
+  margin-top:8px;
+}
+.faq-cta input{
+  padding:14px 16px;
+  border-radius:30px;
+  border:1px solid #000;
+  outline:none;
+  width:260px;
+}
+.faq-cta button{
+  padding:14px 28px;
+  border-radius:30px;
+  border:none;
+  background:#000;
+  color:#fff;
+  cursor:pointer;
+}
+@media(max-width:900px){
+  .faq-cta{flex-direction:column; text-align:center;}
+}
+</style>
+</head>
+
+<body>
+
+  
+    <div id="wrapper">
+
+        <!-- header begin -->
+        <header>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- logo begin -->
+                        <div id="logo">
+                            <a href="index.html">
+                                <img class="logo" src="images/logo-light.png" alt="">
+                            </a>
+                        </div>
+                        <!-- logo close -->
+
+                        <!-- small button begin -->
+                        <span id="menu-btn"></span>
+                        <!-- small button close -->
+
+                        <!-- mainmenu begin -->
+                        <nav>
+                            <ul id="mainmenu">
+                                <li><a href="index.html">Home<span></span></a>
+                                    <ul>
+		                                <li><a href="index-video.html">New: Home Video</a></li>
+		                                <li><a href="index-custom-slider.html">New: Home Custom Slider</a></li>
+                                        <li><a href="index.html">Home Default</a></li>
+                                        <li><a href="index-carousel.html">Home Carousel</a></li>
+                                        <li><a href="index-fullscreen.html">Home Fullscreen</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="about.html">About<span></span></a></li>
+                                <li><a href="services.html">Services<span></span></a>
+                                    <ul>
+                                        <li><a href="services.html">List</a></li>
+                                        <li><a href="service-details.html">Details</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Gallery<span></span></a>
+                                    <ul>
+                                        <li><a href="album.html">Album Default</a></li>
+                                        <li><a href="album-carousel.html">Album Carousel</a></li>
+                                        <li><a href="gallery.html">Gallery</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="blog.html">Blog<span></span></a></li>
+                                <li><a href="contact.html">Contact<span></span></a></li>
+                                <li><a href="faqs.html">Faq<span></span></a></li>
+
+                            </ul>
+                        </nav>
+                        <!-- mainmenu close -->
+
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        <!-- header close -->
+
+<!-- HERO -->
+<section class="faq-hero container">
+  
+  <h2>Frequently Asked Questions</h2>
+</section>
+
+<!-- BEFORE ENROLL -->
+<section class="container">
+  <div class="enroll-grid">
+    <div class="enroll-text">
+      
+      <h2>Dot Colours</h2>
+      <h3>Before You Enroll</h3>
+      <p>Most students wonder what courses we offer and whether they need any experience beforehand. Dotcolours has options, like photography, videography, and editing courses, which are designed for everyone, whether you are a beginner or you have some experience already. There is no need to have any background to come in.</p>
+      <p>The course length is also flexible, between 1 month and 6 months, depending on which course you choose. Another question many have is about equipment. “Do I need to purchase my own camera?” You don’t have to, but it’s always good to have one.</p>
+      <p>We also permit students to cross-list courses, such as Photography and Editing, if you prefer a more holistic learning experience. We offer demo classes to help you decide before you sign up.</p>
+    </div>
+    <div class="enroll-img">
+      <img src="./images/man-stands-camera-with-camera-it_1195965-15646-transformed.webp" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- AFTER ENROLL -->
+<section class="container">
+  <div class="enroll-grid">
+    <div class="enroll-img">
+      <img src="./images/man-stands-camera-with-camera-it_1195965-15646-transformed.webp" alt="">
+    </div>
+    <div class="enroll-text">
+      <h2>After You Enroll</h2>
+      <p>Once you become a member of Dotcolours, you may think about certificates, support, and career choices and placement or job security.</p>
+      <p>Placements are also provided by us, as we connect students with studios, agencies, and freelance work. Throughout the course, our trainers will always be there to remove all doubts and assist you with personal guidance.</p>
+      <p>We assist you in developing your portfolio, learning freelancing, and presenting your work to clients.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="container faq-section">
+  <div class="faq-title">
+    <h2>Frequently Asked Questions</h2>
+    <p>Get clear answers to the most common questions about our courses</p>
+  </div>
+
+  <div class="faq-grid">
+
+    <!-- FAQ ITEM -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <h4>How long does each course take to complete?</h4><span>+</span>
+      </div>
+      <div class="faq-answer">
+        <p>In Dotcolours courses duration usually of 1 month to 6 months, depending on the subject and depth you choose.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <h4>Do you provide one-on-one guidance or only group classes?</h4><span>+</span>
+      </div>
+      <div class="faq-answer">
+        <p>We limit batch sizes to facilitate personal attention from trainers. One-on-one coaching is always on hand when required.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <h4>What makes Dotcolours different from other training institutes?</h4><span>+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Our courses are centered around hands-on practice, industry-standard knowledge, and career guidance rather than theory.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <h4>What if I don’t have a creative background?</h4><span>+</span>
+      </div>
+      <div class="faq-answer">
+        <p>No problem at all. Most of our students join with no experience, and we train them step by step.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+document.querySelectorAll('.faq-question').forEach(q=>{
+  q.addEventListener('click',()=>{
+    q.parentElement.classList.toggle('active');
+  });
+});
+</script>
+
+
+    <!-- Javascript Files
+    ================================================== -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/easing.js"></script>
+    <script src="js/owl.carousel.js"></script>
+    <script src="js/jquery.countTo.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/enquire.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/jquery.plugin.js"></script>
+    <script src="js/typed.js"></script>
+    <script src="js/typed-custom.js"></script>
+    <script src="js/designesia.js"></script>
+
+</body>
+</html>
