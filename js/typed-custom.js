@@ -143,6 +143,6 @@ document.querySelectorAll('.dc-team-card, .dc-counter-box')
   .forEach(el=>observer.observe(el));
 
 
-/* ================================
-   COUNTER ANIMATION
-================================ */
+
+  
+
