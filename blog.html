@@ -91,159 +91,111 @@
         </header>
         <!-- header close -->
 
+<header>
+  <h1>Dot Colours Blog</h1>
+  <button onclick="toggleTheme()">Dark / Light</button>
+</header>
 
-        <!-- content begin -->
-        <div id="content" class="no-top no-bottom" data-bgimage="url(images/background/2.jpg)" data-stellar-background-ratio=".2">
-            <div class="overlay-bg t50 no-bottom">
-                <!-- subheader -->
-                <section id="subheader" class="dark no-top no-bottom">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h1>News</h1>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- subheader close -->
+<section class="wrapper">
 
-                <section aria-label="section-services">
-                    <div class="container">
-                        <div class="row table">
-                            <div class="padding40">
-                                <div class="post-text">
-                                    <h3><a href="news-single.html">Make Better User Interface</a></h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat.
-                                    </p>
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="box">
+    <input placeholder="Search blog..." onkeyup="searchBlogs(this.value)">
+    <h3>Categories</h3>
+    <ul id="categoryList"></ul>
+  </div>
+</aside>
 
-                                    <span class="post-date">January 1, 2019</span>
-                                    <span class="post-comment">1</span>
-                                    <span class="post-like">181</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6 text-middle">
-                                <img src="images/news/1.jpg" class="img-responsive" alt="">
-                            </div>
-                        </div>
+<!-- BLOG LIST -->
+<main>
+  <div class="blog-grid" id="blogList"></div>
+  <div class="pagination" id="pagination"></div>
+</main>
 
-                        <div class="spacer-double"></div>
+</section>
 
-                        <div class="row table">
-                            <div class="col-md-6 text-middle">
-                                <img src="images/news/2.jpg" class="img-responsive" alt="">
-                            </div>
-                            <div class="col-md-6 text-middle">
-                                <div class="padding40">
-                                    <div class="post-text">
-                                        <h3><a href="news-single.html">10 Web Design Tips From Experts</a></h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.
-                                        </p>
+<script>
+/* ---------- BLOG DATA ---------- */
+const blogs=[
+ {id:1,title:"Product Photography: Master Lighting & Styling",cat:"Photography",date:"Jan 25, 2026",read:"6 min",views:120,likes:18,img:"https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",desc:"Professional lighting and styling techniques for commercial product shoots."},
+ {id:2,title:"Studio Lighting Setup Guide",cat:"Photography",date:"Jan 22, 2026",read:"5 min",views:95,likes:12,img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",desc:"How to set up studio lights for clean and consistent results."},
+ {id:3,title:"Creative Product Styling Tips",cat:"Photography",date:"Jan 20, 2026",read:"4 min",views:80,likes:9,img:"https://images.unsplash.com/photo-1520975922284-9dc6fbcad0fa",desc:"Using props and backgrounds to enhance visual storytelling."},
+ {id:4,title:"Cinematic Camera Movements",cat:"Videography",date:"Jan 18, 2026",read:"6 min",views:150,likes:22,img:"https://images.unsplash.com/photo-1492724441997-5dc865305da7",desc:"Professional motion techniques used in filmmaking."},
+ {id:5,title:"Video Lighting Basics",cat:"Videography",date:"Jan 15, 2026",read:"5 min",views:110,likes:14,img:"https://images.unsplash.com/photo-1492691527719-9d1e07e534b4",desc:"Lighting principles for clean and cinematic videos."},
+ {id:6,title:"DSLR Video Settings Explained",cat:"Videography",date:"Jan 12, 2026",read:"5 min",views:70,likes:7,img:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d",desc:"Understanding ISO, shutter speed, and frame rates."},
+];
 
-                                        <span class="post-date">January 1, 2019</span>
-                                        <span class="post-comment">1</span>
-                                        <span class="post-like">181</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+let currentPage=1,perPage=4,activeCat="All",searchQuery="";
 
-                        <div class="spacer-double"></div>
+/* ---------- RENDER ---------- */
+function render(){
+ const list=document.getElementById("blogList");
+ const pag=document.getElementById("pagination");
 
-                        <div class="row table">
-                            <div class="padding40">
-                                <div class="post-text">
-                                    <h3><a href="news-single.html">The Importance Of Web Design</a></h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat.
-                                    </p>
+ let data=blogs.filter(b=>
+  (activeCat==="All"||b.cat===activeCat) &&
+  b.title.toLowerCase().includes(searchQuery)
+ );
 
-                                    <span class="post-date">January 1, 2019</span>
-                                    <span class="post-comment">1</span>
-                                    <span class="post-like">181</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6 text-middle">
-                                <img src="images/news/3.jpg" class="img-responsive" alt="">
-                            </div>
-                        </div>
+ let pages=Math.ceil(data.length/perPage);
+ let start=(currentPage-1)*perPage;
 
-                        <div class="spacer-double"></div>
-
-                        <div class="row table">
-                            <div class="col-md-6 text-middle">
-                                <img src="images/news/4.jpg" class="img-responsive" alt="">
-                            </div>
-                            <div class="col-md-6 text-middle">
-                                <div class="padding40">
-                                    <div class="post-text">
-                                        <h3><a href="news-single.html">Avoid These Erros In UI Design</a></h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.
-                                        </p>
-
-                                        <span class="post-date">January 1, 2019</span>
-                                        <span class="post-comment">1</span>
-                                        <span class="post-like">181</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-double"></div>
-
-                        <div class="text-center">
-                            <ul class="pagination">
-                                <li><a href="#">Prev</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">Next</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </section>
-
-            </div>
-        </div>
-        <!-- content close -->
-
-        <!-- footer begin -->
-        <footer class="s1">
-            <div class="subfooter">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            &copy; Copyright 2023 - Photix by Designesia
-                        </div>
-
-                        <div class="col-md-6 text-right">
-                            <div class="social-icons">
-                                <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
-                                <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
-                                <a href="#"><i class="fa fa-google-plus fa-lg"></i></a>
-                                <a href="#"><i class="fa fa-skype fa-lg"></i></a>
-                                <a href="#"><i class="fa fa-dribbble fa-lg"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- footer close -->
-
-        <a href="#" id="back-to-top"></a>
-        <div id="preloader">
-            <div class="s1">
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+ list.innerHTML=data.slice(start,start+perPage).map(b=>`
+  <article class="card" onclick="openBlog(${b.id})">
+    <img src="${b.img}">
+    <div class="content">
+      <div class="meta">
+        <span>${b.cat}</span>
+        <span>${b.date}</span>
+        <span>${b.read}</span>
+      </div>
+      <h2>${b.title}</h2>
+      <p>${b.desc}</p>
+      <div class="stats">
+        <span>👁 ${b.views}</span>
+        <span>❤️ ${b.likes}</span>
+      </div>
     </div>
+  </article>
+ `).join("");
+
+ pag.innerHTML="";
+ for(let i=1;i<=pages;i++){
+  pag.innerHTML+=`<button class="${i===currentPage?'active':''}" onclick="currentPage=${i};render()">${i}</button>`;
+ }
+}
+
+/* ---------- INTERACTIONS ---------- */
+function openBlog(id){
+ localStorage.setItem("blogId",id);
+ location.href="blog-detail.html";
+}
+function searchBlogs(v){
+ searchQuery=v.toLowerCase();
+ currentPage=1;
+ render();
+}
+
+/* ---------- CATEGORIES ---------- */
+const cats=["All",...new Set(blogs.map(b=>b.cat))];
+document.getElementById("categoryList").innerHTML=cats.map(c=>
+ `<li class="${c==="All"?'active':''}" onclick="activeCat='${c}';currentPage=1;render()">${c}</li>`
+).join("");
+
+/* ---------- THEME ---------- */
+function toggleTheme(){
+ document.body.classList.toggle("light");
+ localStorage.setItem("theme",document.body.classList.contains("light"));
+}
+if(localStorage.getItem("theme")==="true"){
+ document.body.classList.add("light");
+}
+
+/* ---------- INIT ---------- */
+render();
+</script>
+
 
 
 
@@ -264,6 +216,173 @@
     <script src="js/typed.js"></script>
     <script src="js/typed-custom.js"></script>
     <script src="js/designesia.js"></script>
+
+
+    <style>
+:root{
+  --bg:#0b0b0b;
+  --panel:#141414;
+  --border:#222;
+  --text:#ffffff;
+  --muted:#b3b3b3;
+}
+.light{
+  --bg:#f4f4f4;
+  --panel:#ffffff;
+  --border:#ddd;
+  --text:#111;
+  --muted:#555;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  transition:.3s;
+}
+
+/* ---------- HEADER ---------- */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 50px;
+  border-bottom:1px solid var(--border);
+}
+header h1{
+  font-family:'Unbounded';
+  font-size:22px;
+}
+header button{
+  background:none;
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:8px 14px;
+  cursor:pointer;
+}
+
+/* ---------- LAYOUT ---------- */
+.wrapper{
+    max-width: 1024px;
+    width: 100% !important;
+    margin: 0 auto !important;
+    display: grid;
+    grid-template-rows: 300px 1fr;
+    gap: 40px;
+    padding: 150px 100px;
+}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar{
+  position:sticky;
+  top:20px;
+}
+.box{
+  gap: 35px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 25px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+}
+.box h3{
+  font-family:'Unbounded';
+  font-size:14px;
+  margin-bottom:15px;
+}
+.box input{
+  width:100%;
+  padding:10px;
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--text);
+  margin-bottom:20px;
+}
+.box li{
+  list-style:none;
+  padding:8px 0;
+  color:var(--muted);
+  cursor:pointer;
+}
+.box li.active,
+.box li:hover{
+  color:var(--text);
+}
+
+/* ---------- BLOG GRID ---------- */
+.blog-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  cursor:pointer;
+  transition:.3s;
+}
+.card:hover{
+  transform:translateY(-6px);
+}
+.card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+.card .content{
+  padding:20px;
+}
+.meta{
+  font-size:13px;
+  color:var(--muted);
+  display:flex;
+  gap:10px;
+}
+.card h2{
+  font-family:'Unbounded';
+  font-size:18px;
+  margin:10px 0;
+}
+.card p{
+  color:var(--muted);
+  font-size:15px;
+}
+.stats{
+  display:flex;
+  justify-content:space-between;
+  margin-top:15px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* ---------- PAGINATION ---------- */
+.pagination{
+  display:flex;
+  gap:10px;
+  margin-top:40px;
+}
+.pagination button{
+  background:none;
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:6px 12px;
+  cursor:pointer;
+}
+.pagination button.active{
+  background:var(--text);
+  color:var(--bg);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:900px){
+  .wrapper{
+    grid-template-columns:1fr;
+    padding:30px;
+  }
+}
+</style>
 </body>
 
 </html>
